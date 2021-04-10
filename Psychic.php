@@ -15,7 +15,7 @@ class Psychic {
         $this->id = ++self::$counter;
     }
 
-    //создаёт догадку и помещает её в сессию
+    //создаёт догадку и помещает её в сессию, не перезаписывая при перезагрузке
     public function answer_psychic() {
         if (!isset($_SESSION['psychics'][$this->id]) && !isset($_SESSION['number'])) {
             $answer = random_int(10, 99);
@@ -56,20 +56,13 @@ class Psychic {
         if (!isset($_SESSION['level'][$this->id])) {
             return $this->level = $_SESSION['level'][$this->id] = 0;
         }
-        if (isset($_SESSION['psychics']) && isset($_SESSION['number'])) {
-
-            //echo 'работает';
-
+        if (isset($_SESSION['psychics'][$this->id]) && isset($_SESSION['number'])) {
             if (count($_SESSION['psychics'][$this->id]) == count($_SESSION['number'])) {
-                // return $this->level = $_SESSION['level'][$this->id]++;
                 if ($this->answer == end($_SESSION['number'])) {
-                    return $this->level = $_SESSION['level'][$this->id]++;
+                    return $this->level = ++$_SESSION['level'][$this->id];
                 }
-
-                return $this->level = $_SESSION['level'][$this->id]--;
+                return $this->level = --$_SESSION['level'][$this->id];
             }
-
-
         }
         return $this->level = $_SESSION['level'][$this->id];
     }
