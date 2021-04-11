@@ -102,8 +102,6 @@
                 <button class="btn btn-primary align-items-center" type="submit">Отправить</button>
             </div>
         </form>
-
-
     <?php
     endif; ?>
 </div>
