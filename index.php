@@ -8,7 +8,7 @@ require_once('Psychic.php');
 require_once('Number.php');
 
 //Задаём кол-во экстрасенсов
-$number_of_psychics = 3;
+$number_of_psychics = 7;
 
 //Создаём объекты экстрасенсов
 for ($i = 1; $i <= $number_of_psychics; $i++) {
@@ -33,6 +33,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $number->error === null) {
 foreach ($psychic as $value) {
     $value->get_level();
 }
-
 
 require_once('page.php');

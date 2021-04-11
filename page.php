@@ -18,30 +18,30 @@
 
     <?php
     foreach ($psychic as $value) : ?>
-            <div class="col-0 p-3">
-                <div class="card mx-auto border border-primary" style="width: 18rem;">
-                    <div class="card-header">
-                        <h4 class="card-title">Экстрасенс <?= $value->id; ?></h4>
-                    </div>
-                    <img src="img/Экстрасенс<?= $value->id; ?>.jpg" class="card-img-top" alt="Экстрасенс">
-                    <div class="card-body">
-                        <h6 class="card-title text-center">Уровень достоверности</h6>
-                        <h2 class="card-title text-center"><?= $value->level; ?></h2>
-                        <?php
-                        if ($value->get_history_answer()) : ?>
-                            <h6 class="card-subtitle mb-2 text-muted text-center">История догадок :</h6>
-                            <p class="card-body text-muted">
-                                <?php
-                                foreach ($value->get_history_answer() as $v) : ?>
-                                    <?= $v; ?>;
-                                <?php
-                                endforeach; ?>
-                            </p>
-                        <?php
-                        endif; ?>
-                    </div>
+        <div class="col-0 p-3">
+            <div class="card mx-auto border border-primary" style="width: 18rem;">
+                <div class="card-header">
+                    <h4 class="card-title">Экстрасенс <?= $value->id; ?></h4>
+                </div>
+                <img src="<?= $value->get_img(); ?>" class="card-img-top" alt="Изображение аватара экстрасенса">
+                <div class="card-body">
+                    <h6 class="card-title text-center">Уровень достоверности</h6>
+                    <h2 class="card-title text-center"><?= $value->level; ?></h2>
+                    <?php
+                    if ($value->get_history_answer()) : ?>
+                        <h6 class="card-subtitle mb-2 text-muted text-center">История догадок :</h6>
+                        <p class="card-body text-muted">
+                            <?php
+                            foreach ($value->get_history_answer() as $v) : ?>
+                                <?= $v; ?>;
+                            <?php
+                            endforeach; ?>
+                        </p>
+                    <?php
+                    endif; ?>
                 </div>
             </div>
+        </div>
     <?php
     endforeach; ?>
 

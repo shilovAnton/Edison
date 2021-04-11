@@ -66,4 +66,12 @@ class Psychic {
         }
         return $this->level = $_SESSION['level'][$this->id];
     }
+
+    public function get_img()
+    {
+        if (file_exists('img/Экстрасенс' . $this->id . '.jpg')) {
+            return 'img/Экстрасенс' . $this->id . '.jpg';
+        }
+        return 'img/Экстрасенс' . random_int(1, 5) . '.jpg';
+    }
 }
