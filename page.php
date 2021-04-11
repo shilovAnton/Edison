@@ -14,28 +14,32 @@
 
 <body>
 
-<div class="h-100 p-3 mb-6 bg-light.bg-gradient text-dark">
+<div class="h-100 bg-light.bg-gradient text-dark">
 
     <?php
     foreach ($psychic as $value) : ?>
-        <div class="row">
-            <div class="col-sm-6" >
-                <div class="card" style="width: 18rem;">
+        <div class="row justify-content-center p-2 bg-light border">
+            <div class="col-0">
+                <div class="card mx-auto border border-primary" style="width: 18rem;">
                     <div class="card-header">
                         <h4 class="card-title">Экстрасенс <?= $value->id; ?></h4>
                     </div>
-                    <img src="..." class="card-img-top" alt="...">
+                    <img src="img/Экстрасенс<?= $value->id; ?>.jpg" class="card-img-top" alt="Экстрасенс">
                     <div class="card-body">
-                        <h6 class="card-title">Уровень достоверности :</h6>
-                        <h2 class="card-title"><?= $value->level; ?></h2>
-                        <h6 class="card-subtitle mb-2 text-muted">История догадок :</h6>
-                        <p class="card-body">
-                            <?php
-                            foreach ($value->get_history_answer() as $v) : ?>
-                                <?= $v; ?>;
-                            <?php
-                            endforeach; ?>
-                        </p>
+                        <h6 class="card-title text-center">Уровень достоверности</h6>
+                        <h2 class="card-title text-center"><?= $value->level; ?></h2>
+                        <?php
+                        if ($value->get_history_answer()) : ?>
+                            <h6 class="card-subtitle mb-2 text-muted text-center">История догадок :</h6>
+                            <p class="card-body text-muted">
+                                <?php
+                                foreach ($value->get_history_answer() as $v) : ?>
+                                    <?= $v; ?>;
+                                <?php
+                                endforeach; ?>
+                            </p>
+                        <?php
+                        endif; ?>
                     </div>
                 </div>
             </div>
@@ -43,19 +47,18 @@
     <?php
     endforeach; ?>
 
-    <p>История загаданных чисел :</p>
-
-    <?php
-    if ($number->get_history_number()) : ?>
+    <div class="alert alert-dark">
+        <p>История загаданных чисел :</p>
         <?php
-        foreach ($number->get_history_number() as $value) : ?>
-            <?= $value; ?>;
+        if ($number->get_history_number()) : ?>
+            <?php
+            foreach ($number->get_history_number() as $value) : ?>
+                <?= $value; ?>;
+            <?php
+            endforeach; ?>
         <?php
-        endforeach; ?>
-    <?php
-    endif; ?>
-    <hr>
-
+        endif; ?>
+    </div>
     <?php
     if ((!isset($_GET['riddle'])) and ($number->error === null)) : ?>
         <div class="d-grid gap-1 col-3 mx-auto">
@@ -67,33 +70,38 @@
 
         <?php
         foreach ($psychic as $value) : ?>
-            <p>Догадка экстрасенса <?= $value->id; ?> : <?= $value->answer; ?></p>
-            <hr>
+            <div class="alert alert-success" role="alert">
+                <p>Догадка экстрасенса <?= $value->id; ?> : <?= $value->answer; ?></p>
+            </div>
         <?php
         endforeach; ?>
 
-            <form action="index.php" method="post" class="d-grid gap-12 col-5 mx-auto">
-                <div class="col-md-3">
-                    <label for="validationServer05" class="form-label">Введите ваше двузначное число:</label>
-                    <input type="text" name="number" class="form-control <?php
-                    if (!empty($number->error)): ?>is-invalid<?php
-                    endif; ?>" id="validationServer05"
-                           aria-describedby="validationServer05Feedback" required>
-                    <div id="validationServer05Feedback" class="invalid-feedback">
+        <form action="index.php" method="post" class="row g-3 mx-auto">
+
+            <div class="col-auto">
+                <label for="validationServer05" class="form-label">Введите ваше двузначное число:</label>
+            </div>
+            <div class="col-auto">
+                <input type="text" name="number" class="form-control <?php
+                if (!empty($number->error)): ?>is-invalid<?php
+                endif; ?>" id="validationServer05"
+                       aria-describedby="validationServer05Feedback" required>
+                <div id="validationServer05Feedback" class="invalid-feedback">
+                    <?php
+                    if (!empty($number->error)) : ?>
+                        <?= $number->error; ?>
                         <?php
-                        if (!empty($number->error)) : ?>
-                            <?= $number->error; ?>
-                            <?php
-                            $number->error = null;
-                            ?>
-                        <?php
-                        endif; ?>
-                    </div>
+                        $number->error = null;
+                        ?>
+                    <?php
+                    endif; ?>
                 </div>
-                <div class="d-grid gap-12 col-5 mx-auto">
-                    <button class="btn btn-primary btn-sm" type="submit">Отправить</button>
-                </div>
-            </form>
+            </div>
+
+            <div class="col-auto">
+                <button class="btn btn-primary align-items-center" type="submit">Отправить</button>
+            </div>
+        </form>
 
 
     <?php

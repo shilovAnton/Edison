@@ -1,7 +1,9 @@
 <?php
 
+//время жизни сессии 1 час..
+ini_set('session.gc_maxlifetime', 3600);
 session_start();
-
+//session_destroy();
 require_once('Psychic.php');
 require_once('Number.php');
 
