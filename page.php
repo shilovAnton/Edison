@@ -97,7 +97,6 @@
                     endif; ?>
                 </div>
             </div>
-
             <div class="col-auto">
                 <button class="btn btn-primary align-items-center" type="submit">Отправить</button>
             </div>
