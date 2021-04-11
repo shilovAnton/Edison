@@ -18,8 +18,7 @@
 
     <?php
     foreach ($psychic as $value) : ?>
-        <div class="row justify-content-center p-2 bg-light border">
-            <div class="col-0">
+            <div class="col-0 p-3">
                 <div class="card mx-auto border border-primary" style="width: 18rem;">
                     <div class="card-header">
                         <h4 class="card-title">Экстрасенс <?= $value->id; ?></h4>
@@ -43,7 +42,6 @@
                     </div>
                 </div>
             </div>
-        </div>
     <?php
     endforeach; ?>
 
@@ -79,7 +77,7 @@
         <form action="index.php" method="post" class="row g-3 mx-auto">
 
             <div class="col-auto">
-                <label for="validationServer05" class="form-label">Введите ваше двузначное число:</label>
+                <label for="validationServer05" class="form-label my-0">Введите ваше двузначное число:</label>
             </div>
             <div class="col-auto">
                 <input type="text" name="number" class="form-control <?php
@@ -104,6 +102,7 @@
     <?php
     endif; ?>
 </div>
+<div class="alert alert-dark mt-3 my-0" role="alert"></div>
 
 </body>
 </html>
