@@ -27,7 +27,7 @@
                     <img src="<?= $value->get_img(); ?>" class="card-img-top" alt="Изображение аватара экстрасенса">
                     <div class="card-body">
                         <h6 class="card-title text-center">Уровень достоверности</h6>
-                        <h2 class="card-title text-center"><?= $value->level; ?></h2>
+                        <h2 class="card-title text-center"><?= $value->get_level(); ?></h2>
                         <?php
                         if ($value->get_history_answer()) : ?>
                             <h6 class="card-subtitle mb-2 text-muted text-center">История догадок :</h6>

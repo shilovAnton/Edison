@@ -29,9 +29,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $number->error === null) {
     $number->recording_number($_POST['number']);
 }
 
-// устанавливаем level (уровень достоверности экстрасенса)
-foreach ($psychic as $value) {
-    $value->get_level();
-}
-
 require_once('page.php');
