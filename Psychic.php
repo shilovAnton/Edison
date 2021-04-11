@@ -67,11 +67,15 @@ class Psychic {
         return $this->level = $_SESSION['level'][$this->id];
     }
 
+    // возвращает img, если существует, или генерит
     public function get_img()
     {
-        if (file_exists('img/Экстрасенс' . $this->id . '.jpg')) {
-            return 'img/Экстрасенс' . $this->id . '.jpg';
+        if (!isset($_SESSION['img'][$this->id])) {
+            if (file_exists('img/Экстрасенс' . $this->id . '.jpg')) {
+                return $_SESSION['img'][$this->id] = 'img/Экстрасенс' . $this->id . '.jpg';
+            }
+            return $_SESSION['img'][$this->id] = 'img/Экстрасенс' . random_int(1, 5) . '.jpg';
         }
-        return 'img/Экстрасенс' . random_int(1, 5) . '.jpg';
+        return $_SESSION['img'][$this->id];
     }
 }

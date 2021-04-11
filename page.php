@@ -18,6 +18,7 @@
     <div class="row row-cols-1 row-cols-lg-3 g-20 g-lg-20 mt-3 my-3 g-0">
         <?php
         foreach ($psychic as $value) : ?>
+
             <div class="col">
                 <div class="card mx-auto border border-primary mt-3 my-3" style="width: 18rem;">
                     <div class="card-header">
