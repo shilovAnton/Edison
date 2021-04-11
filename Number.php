@@ -20,7 +20,7 @@ class Number
             if ($filter_number) {
                 $this->number = $number;
                 return $_SESSION['number'][array_key_last($_SESSION['psychics'][1])] = $number;
-            } else return $this->error = 'Введите двузначное число';
+            } else return $this->error = 'Введите данные нужном формате!';
     }
 
     //возвращает историю ответов экстрасенса
